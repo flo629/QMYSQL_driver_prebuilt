@@ -16,15 +16,15 @@ jobs:
       - name: install qt
         run: |
           pip install aqtinstall
-          python3 -m aqt install-qt -O ${{ github.workspace }}/Qt/ mac desktop 6.2.1
-          echo "${{ github.workspace }}/Qt/6.2.1/macos/bin/" >> $GITHUB_PATH
-          export PATH=$PATH:"${{ github.workspace }}/Qt/6.2.1/clang_64/bin/"
+          python3 -m aqt install-qt -O ${{ github.workspace }}/Qt/ mac desktop 6.6.0
+          echo "${{ github.workspace }}/Qt/6.6.0/macos/bin/" >> $GITHUB_PATH
+          export PATH=$PATH:"${{ github.workspace }}/Qt/6.6.0/clang_64/bin/"
           brew update
           brew upgrade
           brew install boost traildb/judy/judy
           brew install mariadb cmake
           export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
-          ./build_qsql.sh 6.2.1 mac
+          ./build_qsql.sh 6.6.0 mac
           cd ${{ github.workspace }}/qtbase/src/plugins/sqldrivers/
           mkdir -p mariadb_driver/plugins/sqldrivers
           cp plugins/sqldrivers/libqsqlmysql.dylib mariadb_driver/plugins/sqldrivers
